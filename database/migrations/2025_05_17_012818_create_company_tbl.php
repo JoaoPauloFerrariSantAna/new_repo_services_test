@@ -6,20 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    protected $table = array("name", "product_id");
     public function up(): void
     {
         Schema::create('company_tbl', function (Blueprint $table) {
             $table->id();
+            $table->string("name", 32);
+            $table->foreignId("product_id");
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('company_tbl');
